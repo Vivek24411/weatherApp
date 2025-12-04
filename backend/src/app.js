@@ -10,7 +10,8 @@ app.use(cors({
     origin: (origin, callback) => {
         const allowedOrigins = [
             'http://localhost:5173',
-            'https://weather-app-mauve-seven-72.vercel.app' // Replace with your actual frontend URL after deployment
+            'https://weather-app-mauve-seven-72.vercel.app',
+            "https://weather.devx6.live" // Replace with your actual frontend URL after deployment
         ];
         
         if (!origin || allowedOrigins.includes(origin)) {
