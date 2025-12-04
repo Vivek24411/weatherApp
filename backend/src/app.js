@@ -7,15 +7,18 @@ dbConnection();
 
 
 app.use(cors({
-    origin: (origin, callback)=>{
-        if(!origin){
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'http://localhost:5173',
+            'https://your-frontend-domain.com' // Replace with your actual frontend URL after deployment
+        ];
+        
+        if (!origin || allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
-        if(origin!="http://localhost:5173"){
-            return callback(new Error("Wrong Frontend"), false);
-        }
-        return callback(null, true);
-    }
+        return callback(new Error("Not allowed by CORS"), false);
+    },
+    credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
